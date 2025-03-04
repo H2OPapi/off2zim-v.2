@@ -85,10 +85,14 @@ ________________________________________________________________________________
 For any questions or inquiries, feel free to reach out:
 
 Email: info@off2zim.co.zw
+
 Website: off2Zim.co.zw
-Social Media:
+
+**Social Media**
 Facebook - https://www.facebook.com/Off2Zim
+
 Instagram - https://www.instagram.com/off2zim/
+
 X - https://x.com/Off2Zim
 _________________________________________________________________________________________________
 **Acknowledgments**
