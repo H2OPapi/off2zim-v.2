@@ -49,6 +49,16 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
+
+  // Responsive Menu Toggle for Mobile Navigation
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', function () {
+      navLinks.classList.toggle('active');
+    });
+  }
 });
 
 // Email Validation Function
@@ -57,7 +67,7 @@ function validateEmail(email) {
   return re.test(email);
 }
 
-// Sticky Navigation: Toggle 'sticky' class based on scroll position
+// Sticky Header on Scroll
 window.addEventListener('scroll', function () {
   const header = document.querySelector('header');
   if (window.scrollY > 50) {
@@ -70,19 +80,9 @@ window.addEventListener('scroll', function () {
 // Dynamic Year Update in Footer
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Responsive Menu Toggle for Mobile Navigation
-const menuToggle = document.querySelector('.menu-book .btn-outline');
-const navLinks = document.querySelector('.nav-links');
-if (menuToggle && navLinks) {
-  menuToggle.addEventListener('click', function (e) {
-    e.preventDefault();
-    navLinks.classList.toggle('active');
-  });
-}
-
 // Close Responsive Menu When Clicking Outside
 window.addEventListener('click', function (e) {
-  if (!e.target.matches('.menu-book .btn-outline') && !e.target.closest('.nav-links')) {
+  if (!e.target.matches('.menu-toggle') && !e.target.closest('.nav-links')) {
     navLinks.classList.remove('active');
   }
 });

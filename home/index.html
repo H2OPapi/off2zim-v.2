@@ -18,6 +18,9 @@
   <!-- Header Section -->
   <header>
     <div class="container header-container">
+      <button class="menu-toggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
       <div class="logo">
         <img src="../logos/logo.png" alt="Off2Zim Logo" class="logo-img" />
       </div>
@@ -123,7 +126,6 @@
   <!-- Testimonial Section -->
   <section class="testimonial">
     <div class="container">
-      <img src="../images/client-dp.png" alt="Client Photo" class="client-dp" />
       <div class="star-rating">
         <span class="fa fa-star"></span>
         <span class="fa fa-star"></span>
@@ -132,6 +134,7 @@
         <span class="fa fa-star"></span>
       </div>
       <div class="testimonial-content">
+        <img src="../images/client-dp.png" alt="Client Photo" class="client-dp" />
         <blockquote>
           <p>
             "Off2Zim made my trip unforgettable! The ease of booking activities and accommodations was incredible."
@@ -209,6 +212,15 @@
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
   <script src="scripts.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
 
+      menuToggle.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+      });
+    });
+  </script>
 </body>
 </html>
