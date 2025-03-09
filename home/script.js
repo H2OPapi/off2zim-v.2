@@ -86,3 +86,40 @@ window.addEventListener('click', function (e) {
     navLinks.classList.remove('active');
   }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const tempElements = document.querySelectorAll(".destination-temp");
+
+  tempElements.forEach((element) => {
+    const tempText = element.textContent.match(/\d+/g); // Extract numbers
+    if (tempText && tempText.length === 2) {
+      const highTemp = parseInt(tempText[0]); // High temperature
+      const lowTemp = parseInt(tempText[1]);  // Low temperature
+
+      const highSpan = document.createElement("span");
+      highSpan.textContent = `H: ${highTemp}° `;
+      if (highTemp >= 30) {
+        highSpan.classList.add("temp-high-hot"); // Red for 30°C+
+      } else if (highTemp >= 20) {
+        highSpan.classList.add("temp-high-warm"); // Orange for 20-29°C
+      } else {
+        highSpan.classList.add("temp-high-cold"); // Blue for 19°C and below
+      }
+
+      const lowSpan = document.createElement("span");
+      lowSpan.textContent = `L: ${lowTemp}°`;
+      if (lowTemp >= 30) {
+        lowSpan.classList.add("temp-low-hot"); // Red for 30°C+
+      } else if (lowTemp >= 20) {
+        lowSpan.classList.add("temp-low-warm"); // Orange for 20-29°C
+      } else {
+        lowSpan.classList.add("temp-low-cold"); // Blue for 19°C and below
+      }
+
+      // Clear existing text and append the new elements
+      element.textContent = "";
+      element.appendChild(highSpan);
+      element.appendChild(lowSpan);
+    }
+  });
+});

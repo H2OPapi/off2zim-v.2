@@ -1,11 +1,26 @@
+@font-face {
+  font-family: 'Century Gothic';
+  src: url('../fonts/centurygothic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Century Gothic';
+  src: url('../fonts/centurygothic_bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
 /* CSS Variables for Consistency */
 :root {
-  --primary-color: #3498db;
-  --primary-hover: #2980b9;
+  --primary-color: #000000;
+  --primary-hover: #909090;
   --secondary-color: #2c3e50;
   --background-light: #f9f9f9;
   --accent-color: #ffcc00;
-  --font-family: 'Inter', sans-serif;
+  font-family: 'Century Gothic', sans-serif;
+  
 }
 
 /* Global Styles */
@@ -15,7 +30,7 @@
   box-sizing: border-box;
 }
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Century Gothic', sans-serif;
   line-height: 1.6;
   color: #333;
   background: url('../images/background.png') no-repeat center center fixed;
@@ -25,7 +40,7 @@ body {
 }
 .container {
   width: 90%;
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
 }
 
@@ -41,17 +56,20 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 .logo-img {
   width: 150px;
+}
+.icon-img {
+  width: 20px;
 }
 .nav-links {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
-  gap: 20px;
+  gap: 2px;
 }
 .nav-links li {
   position: relative;
@@ -62,9 +80,14 @@ header {
   padding: 10px 15px;
   display: block;
   transition: background-color 0.3s ease;
+  
+  font-size: 15px; /* Adjust the font size as needed */
 }
 .nav-links a:hover {
-  background-color: #f0f0f0;
+  transform: scale(1.1);
+  transition: transform 0.2s ease-in-out;
+  background: none !important;
+  font-weight: bold;
 }
 .dropdown-content {
   display: none;
@@ -88,6 +111,51 @@ header {
 .menu-book {
   display: flex;
   gap: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+.menu-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%; /* Cover the entire width of the screen */
+  background-color: #fff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow at the bottom */
+  z-index: 1;
+  min-width: 200px;
+  border-radius: 5px;
+  padding: 10px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.menu-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-dropdown ul li {
+  border-bottom: 1px solid #ddd;
+}
+
+.menu-dropdown ul li a {
+  display: block;
+  padding: 12px 16px;
+  color: #000;
+  text-decoration: none;
+}
+
+.menu-dropdown ul li a:hover {
+  background-color: #f0f0f0;
+}
+
+.menu-book:hover .menu-dropdown {
+  display: block;
 }
 
 /* Buttons */
@@ -101,7 +169,12 @@ header {
 }
 .btn-primary {
   background: var(--primary-color);
-  color: #fff;
+  color: #f0f0f0;
+  display: flex;
+  align-items: center; /* Align image and text vertically */
+  gap: 7px; /* Space between image and text */
+  font-weight: bold; /* Keep the font bold */
+  font-size: 15px; /* Adjust the font size as needed */
 }
 .btn-primary:hover {
   background: var(--primary-hover);
@@ -109,12 +182,36 @@ header {
 .btn-outline {
   border: 2px solid var(--primary-color);
   color: var(--primary-color);
+  display: flex;
+  align-items: center; /* Align image and text vertically */
+  gap: 7px; /* Space between image and text */
+  font-weight: bold; /* Keep the font bold */
+  font-size: 15px; /* Adjust the font size as needed */
 }
 .btn-outline:hover {
   background: var(--primary-color);
   color: #fff;
 }
 
+.login-icon {
+  width: 20px; /* Adjust size as needed */
+  height: 20px; /* Adjust size as needed */
+  filter: brightness(0) invert(1); /* Change color to white */
+  transition: all 0.3s ease; /* Ensure smooth transition */
+}
+
+.btn-outline:hover .login-icon {
+  filter: none; /* Change color back to original on hover */
+}
+.btn-menu {
+  background: var(--primary-color);
+  color: #f0f0f0;
+  display: flex;
+  align-items: center; /* Align image and text vertically */
+  gap: 7px; /* Space between image and text */
+  font-weight: bold; /* Keep the font bold */
+  font-size: 15px; /* Adjust the font size as needed */
+}
 /* Hero Section */
 .hero {
   position: relative;
@@ -126,7 +223,6 @@ header {
   padding: 100px 0; /* Adjust padding as needed */
   font-family: var(--font-family);
   font-weight: 400;
-  font-style: oblique;
   text-align: center; /* Center justify text */
 }
 
@@ -165,7 +261,7 @@ header {
   justify-content: center;
   gap: 20px;
   animation: fadeInUp 1.5s ease-out;
-  font: 1em sans-serif;
+  font-family: 'Century Gothic', sans-serif;
 }
 
 /* Keyframe Animations */
@@ -455,7 +551,7 @@ footer {
 
 /* Default Font Class */
 .default-font {
-  font-family: Arial, sans-serif; /* Fallback to Arial or any sans-serif font */
+  font-family: 'Century Gothic', sans-serif;
 }
 
 /* Sticky Header */
@@ -480,7 +576,9 @@ header.sticky {
   background: #fff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-
+.special-offers a {
+  color: red !important;
+}
 @media (min-width: 769px) {
   .nav-links.active {
     display: flex;
@@ -488,5 +586,170 @@ header.sticky {
     position: static;
     background: none;
     box-shadow: none;
+  }
+}
+
+/* Style for the menu container */
+.menu-container {
+  position: relative;
+  display: inline-block;
+  
+}
+
+/* Style for the menu icon */
+.menu-icon {
+  width: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu-container:hover .menu-icon {
+  transform: scale(1.1);
+}
+
+/* Dropdown Menu Styling */
+.menu-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 250px;
+  background: rgba(253, 253, 253);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.menu-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.menu-dropdown ul li {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px; /* Adjusted for proper spacing */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.menu-dropdown ul li a {
+  display: flex;
+  align-items: center; /* Ensures vertical centering */
+  justify-content: flex-start; /* Aligns text and icon to the left */
+  text-decoration: none;
+  color: #000;
+  font-size: 16px;
+  width: 100%;
+  height: 100%; /* Ensures the text stays centered */
+  gap: 12px; /* Adjusted space between icon and text */
+}
+.menu-dropdown li {
+  padding: 15px 20px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 50px; /* Ensures equal top and bottom spacing */
+}
+
+.menu-dropdown li:last-child {
+  border-bottom: none;
+}
+
+.menu-dropdown li a {
+  display: flex;
+  align-items: center;  /* Centers icon and text vertically */
+  justify-content: flex-start; /* Aligns everything to the left */
+  padding: 12px 16px;  /* Adjust spacing */
+  text-decoration: none;
+  color: #000;
+  font-size: 16px;
+  transition: background 0.3s ease;
+  gap: 10px; /* Adds space between icon and text */
+}
+
+.menu-dropdown ul li a:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s ease-in-out;
+  background: none !important;
+  font-weight: bold;
+}
+
+
+
+.menu-item-icon {
+   /* Ensures uniform icon size */
+  height: 24px;
+}
+.see-all a {
+  color: #909090 !important;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.chevron-icon {
+  width: 12px; /* Reduced icon size */
+  height: 12px;
+}
+.destination-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.destination-name {
+  
+  color: #000;
+}
+
+.destination-temp {
+  font-size: 14px;
+  display: flex;
+  gap: 5px;
+}
+
+/* High Temperature Colors */
+.temp-high-hot {
+  color: #FF4500; /* Red for 30°C+ */
+}
+.temp-high-warm {
+  color: #FFA500; /* Orange for 20-29°C */
+}
+.temp-high-cold {
+  color: #007BFF; /* Blue for 19°C and below */
+}
+
+/* Low Temperature Colors */
+.temp-low-hot {
+  color: #FF4500; /* Red for 30°C+ */
+}
+.temp-low-warm {
+  color: #FFA500; /* Orange for 20-29°C */
+}
+.temp-low-cold {
+  color: #007BFF; /* Blue for 19°C and below */
+}
+
+
+
+
+
+.menu-container:hover .menu-dropdown {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .menu-dropdown {
+    position: absolute;
+    width: 100%;
   }
 }
