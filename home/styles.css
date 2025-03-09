@@ -98,7 +98,7 @@ header {
   min-width: 200px;
 }
 .dropdown-content a {
-  padding: 12px 16px;
+  padding: 20px 20px;
   display: block;
   color: #000;
 }
@@ -126,7 +126,7 @@ header {
   z-index: 1;
   min-width: 200px;
   border-radius: 5px;
-  padding: 10px 0;
+  padding: 20px 0;
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
@@ -135,7 +135,7 @@ header {
 
 .menu-dropdown ul {
   list-style: none;
-  padding: 0;
+  padding: 20px;
   margin: 0;
 }
 
@@ -145,7 +145,7 @@ header {
 
 .menu-dropdown ul li a {
   display: block;
-  padding: 12px 16px;
+  padding:23px 16px;
   color: #000;
   text-decoration: none;
 }
@@ -669,7 +669,7 @@ header.sticky {
   color: #000;
   font-size: 16px;
   transition: background 0.3s ease;
-  gap: 17px; /* Adds space between icon and text */
+  gap: 23px; /* Adds space between icon and text */
 }
 
 .menu-dropdown ul li a:hover {
