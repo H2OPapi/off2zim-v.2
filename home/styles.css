@@ -613,7 +613,7 @@ header.sticky {
   position: absolute;
   top: 100%;
   left: 0;
-  width: 250px;
+  width: 350px;
   background: rgba(253, 253, 253);
   backdrop-filter: blur(10px);
   border-radius: 10px;
@@ -644,7 +644,7 @@ header.sticky {
   font-size: 16px;
   width: 100%;
   height: 100%; /* Ensures the text stays centered */
-  gap: 12px; /* Adjusted space between icon and text */
+  gap: 23px; /* Adjusted space between icon and text */
 }
 .menu-dropdown li {
   padding: 15px 20px;
@@ -669,7 +669,7 @@ header.sticky {
   color: #000;
   font-size: 16px;
   transition: background 0.3s ease;
-  gap: 10px; /* Adds space between icon and text */
+  gap: 17px; /* Adds space between icon and text */
 }
 
 .menu-dropdown ul li a:hover {
@@ -683,7 +683,7 @@ header.sticky {
 
 .menu-item-icon {
    /* Ensures uniform icon size */
-  height: 24px;
+  height: 32px;
 }
 .see-all a {
   color: #909090 !important;
