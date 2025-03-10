@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
     dots[slideIndex].classList.add("active");
     
     // Restart interval
-    autoSlideInterval = setInterval(nextSlide, 5000);
+    autoSlideInterval = setInterval(nextSlide, 7000);
   }
 
   function setSlide(n) {
