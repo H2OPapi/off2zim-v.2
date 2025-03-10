@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     dots[0].classList.add("active");
     
     // Start auto-slide
-    autoSlideInterval = setInterval(nextSlide, 5000);
+    autoSlideInterval = setInterval(nextSlide, 9000);
   }
 
   function nextSlide() {
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
     dots[slideIndex].classList.add("active");
     
     // Restart interval
-    autoSlideInterval = setInterval(nextSlide, 7000);
+    autoSlideInterval = setInterval(nextSlide, 9000);
   }
 
   function setSlide(n) {
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
     dots[slideIndex].classList.add("active");
     
     // Restart interval
-    autoSlideInterval = setInterval(nextSlide, 5000);
+    autoSlideInterval = setInterval(nextSlide, 9000);
   }
 
   // Add click handlers to indicators
