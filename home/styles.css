@@ -212,66 +212,80 @@ header {
   font-weight: bold; /* Keep the font bold */
   font-size: 15px; /* Adjust the font size as needed */
 }
-/* Hero Section */
-.hero {
-  position: relative;
-  background-image: url('../images/elephants.jpg'); 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: white; /* Ensure text is readable */
-  padding: 100px 0; /* Adjust padding as needed */
-  font-family: var(--font-family);
-  font-weight: 400;
-  text-align: center; /* Center justify text */
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
+/* Slideshow container */
+/* ==================== Simplified Slideshow Styles ==================== */
+.slideshow {
   width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Optional: Add a dark overlay for better text contrast */
+  height: 70vh;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
   z-index: 1;
 }
 
-.hero .container {
-  position: relative;
-  z-index: 2;
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
 }
 
-.hero h1 {
-  font-size: 3.5rem;
-  margin-bottom: 20px;
-  animation: fadeInDown 1s ease-out;
+.slide.active {
+  opacity: 1;
+  z-index: 1;
 }
 
-.hero strong {
-  font-size: 1.2rem;
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
-  margin-bottom: 30px;
-  color: #fff;
-  animation: fadeInUp 1s ease-out;
 }
 
-.hero-buttons {
+.indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  justify-content: center;
-  gap: 20px;
-  animation: fadeInUp 1.5s ease-out;
-  font-family: 'Century Gothic', sans-serif;
+  gap: 12px;
+  z-index: 9999;
 }
 
-/* Keyframe Animations */
-@keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+.indicators span {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
 }
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+
+.indicators span.active {
+  background: #ffffff;
+  transform: scale(1.2);
+}
+
+.indicators span:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .slideshow {
+    height: 50vh;
+  }
+  
+  .indicators {
+    bottom: 10px;
+  }
+  
+  .indicators span {
+    width: 12px;
+    height: 12px;
+  }
 }
 
 /* Features Section */
@@ -699,7 +713,9 @@ header.sticky {
 .destination-info {
   display: flex;
   flex-direction: column;
-  margin-left: 10px;
+  
+  
+  
 }
 
 .destination-name {
@@ -735,16 +751,127 @@ header.sticky {
   color: #007BFF; /* Blue for 19°C and below */
 }
 
-
-
-
-
 .menu-container:hover .menu-dropdown {
   display: block;
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
+
+.search-section {
+  background: white;
+  padding: 10px;
+
+}
+
+.search-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.tab {
+  font-family: 'Century Gothic', sans-serif;
+  font-size: 13px;
+  color: black;
+  background: none;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.tab.active {
+  font-family: 'Century Gothic', sans-serif;
+  background: var(--primary-color);
+  color: white;
+  border-radius: 5px;
+  font-size: 15px;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.search-form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+ 
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.search-fields {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.search-field {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-field label {
+  
+  margin-bottom: 5px;
+}
+
+.search-field input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.search-button {
+  
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.search-button .btn-primary {
+  padding: 10px 20px;
+  background: var(--primary-color);
+  color: white;
+  font-family: 'Century Gothic', sans-serif;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.search-button .btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+[data-tab-content] {
+  display: none;
+}
+
+[data-tab-content]:not([hidden]) {
+  display: flex;
+}
+
+
+
+
 
 /* Responsive Design */
 @media (max-width: 768px) {

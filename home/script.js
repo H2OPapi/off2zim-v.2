@@ -1,125 +1,94 @@
-// Wait for the DOM to fully load
-document.addEventListener('DOMContentLoaded', function () {
-  // Dropdown Menu Toggle
-  const dropdowns = document.querySelectorAll('.dropdown');
-  dropdowns.forEach(dropdown => {
-    dropdown.addEventListener('click', function (e) {
-      e.preventDefault();
-      this.querySelector('.dropdown-content').classList.toggle('show');
-    });
-  });
-
-  // Close dropdown when clicking outside
-  window.addEventListener('click', function (e) {
-    if (!e.target.matches('.dropbtn')) {
-      const dropdownContents = document.querySelectorAll('.dropdown-content');
-      dropdownContents.forEach(dropdown => {
-        if (dropdown.classList.contains('show')) {
-          dropdown.classList.remove('show');
-        }
-      });
-    }
-  });
-
-  // Smooth Scrolling for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth'
-        });
-      }
-    });
-  });
-
-  // Form Validation for Newsletter Subscription
-  const newsletterForm = document.querySelector('.newsletter-section form');
-  if (newsletterForm) {
-    newsletterForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const emailInput = this.querySelector('input[type="email"]');
-      const email = emailInput.value.trim();
-      if (validateEmail(email)) {
-        alert('Thank you for subscribing!');
-        this.reset();
-      } else {
-        alert('Please enter a valid email address.');
-      }
-    });
-  }
-
-  // Responsive Menu Toggle for Mobile Navigation
-  const menuToggle = document.querySelector('.menu-toggle');
-  const navLinks = document.querySelector('.nav-links');
-
-  if (menuToggle && navLinks) {
-    menuToggle.addEventListener('click', function () {
-      navLinks.classList.toggle('active');
-    });
-  }
-});
-
-// Email Validation Function
-function validateEmail(email) {
-  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return re.test(email);
-}
-
-// Sticky Header on Scroll
-window.addEventListener('scroll', function () {
-  const header = document.querySelector('header');
-  if (window.scrollY > 50) {
-    header.classList.add('sticky');
-  } else {
-    header.classList.remove('sticky');
-  }
-});
-
-// Dynamic Year Update in Footer
-document.getElementById('year').textContent = new Date().getFullYear();
-
-// Close Responsive Menu When Clicking Outside
-window.addEventListener('click', function (e) {
-  if (!e.target.matches('.menu-toggle') && !e.target.closest('.nav-links')) {
-    navLinks.classList.remove('active');
-  }
-});
-
 document.addEventListener("DOMContentLoaded", function () {
-  const tempElements = document.querySelectorAll(".destination-temp");
+  let slideIndex = 0;
+  let slides = document.querySelectorAll(".slide");
+  let dots = document.querySelectorAll(".indicators span");
+  let autoSlideInterval;
 
-  tempElements.forEach((element) => {
-    const tempText = element.textContent.match(/\d+/g); // Extract numbers
-    if (tempText && tempText.length === 2) {
-      const highTemp = parseInt(tempText[0]); // High temperature
-      const lowTemp = parseInt(tempText[1]);  // Low temperature
+  // Initialize slideshow
+  function initializeSlideshow() {
+    // Remove any existing active classes
+    slides.forEach(slide => slide.classList.remove("active"));
+    dots.forEach(dot => dot.classList.remove("active"));
+    
+    // Activate first slide and dot
+    slides[0].classList.add("active");
+    dots[0].classList.add("active");
+    
+    // Start auto-slide
+    autoSlideInterval = setInterval(nextSlide, 5000);
+  }
 
-      const highSpan = document.createElement("span");
-      highSpan.textContent = `H: ${highTemp}° `;
-      if (highTemp >= 30) {
-        highSpan.classList.add("temp-high-hot"); // Red for 30°C+
-      } else if (highTemp >= 20) {
-        highSpan.classList.add("temp-high-warm"); // Orange for 20-29°C
-      } else {
-        highSpan.classList.add("temp-high-cold"); // Blue for 19°C and below
-      }
+  function nextSlide() {
+    // Clear existing interval
+    clearInterval(autoSlideInterval);
+    
+    // Remove active classes
+    slides[slideIndex].classList.remove("active");
+    dots[slideIndex].classList.remove("active");
+    
+    // Update index
+    slideIndex = (slideIndex + 1) % slides.length;
+    
+    // Add active classes
+    slides[slideIndex].classList.add("active");
+    dots[slideIndex].classList.add("active");
+    
+    // Restart interval
+    autoSlideInterval = setInterval(nextSlide, 5000);
+  }
 
-      const lowSpan = document.createElement("span");
-      lowSpan.textContent = `L: ${lowTemp}°`;
-      if (lowTemp >= 30) {
-        lowSpan.classList.add("temp-low-hot"); // Red for 30°C+
-      } else if (lowTemp >= 20) {
-        lowSpan.classList.add("temp-low-warm"); // Orange for 20-29°C
-      } else {
-        lowSpan.classList.add("temp-low-cold"); // Blue for 19°C and below
-      }
+  function setSlide(n) {
+    // Clear existing interval
+    clearInterval(autoSlideInterval);
+    
+    // Remove active classes
+    slides[slideIndex].classList.remove("active");
+    dots[slideIndex].classList.remove("active");
+    
+    // Update index
+    slideIndex = n;
+    
+    // Add active classes
+    slides[slideIndex].classList.add("active");
+    dots[slideIndex].classList.add("active");
+    
+    // Restart interval
+    autoSlideInterval = setInterval(nextSlide, 5000);
+  }
 
-      // Clear existing text and append the new elements
-      element.textContent = "";
-      element.appendChild(highSpan);
-      element.appendChild(lowSpan);
-    }
+  // Add click handlers to indicators
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => setSlide(index));
+  });
+
+  // Initialize the slideshow
+  initializeSlideshow();
+
+  // Navigation Menu Toggle
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navLinks = document.querySelector(".nav-links");
+  
+  menuToggle.addEventListener("click", function () {
+      navLinks.classList.toggle("active");
+  });
+
+  // Sticky Header on Scroll
+  window.addEventListener("scroll", function () {
+      const header = document.querySelector("header");
+      header.classList.toggle("sticky", window.scrollY > 50);
+  });
+
+  // Dynamic Year in Footer
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Smooth Scrolling for Anchor Links
+  document.querySelectorAll("a[href^='#']").forEach(anchor => {
+      anchor.addEventListener("click", function (event) {
+          event.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+              target.scrollIntoView({ behavior: "smooth" });
+          }
+      });
   });
 });

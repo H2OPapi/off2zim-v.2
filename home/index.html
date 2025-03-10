@@ -26,7 +26,7 @@
         <img src="../logos/logo.png" alt="Off2Zim Logo" class="logo-img" />
       </div>
       <div class="menu-container">
-        <img src="../icons/menu.png" alt="Menu Icon" class="menu-icon" />
+        <img src="../icons/shield.png" alt="Menu Icon" class="menu-icon" />
         <div class="menu-dropdown">
           <ul>
             <li class="special-offers"><a href="#"><img src="../icons/special-offers.png" alt="Specials Icon" class="menu-item-icon" /> Specials</a></li>
@@ -46,8 +46,8 @@
         <ul class="nav-links">
           <li><a href="#">Specials</a></li>
           <li><a href="#">Shop</a></li>
-          <li class="menu-container">
-            <a href="#" class="menu-trigger">Destinations</a>
+          <div class="menu-container">
+            <a href="#" class="menu-trigger">Destination</a>
             <div class="menu-dropdown">
               <ul>
                 <li>
@@ -63,7 +63,7 @@
                 </li>
                 <li>
                   <a href="#">
-                    <img src="../icons/shield.png" class="menu-item-icon" />
+                    <img src="../icons/destinations.png" class="menu-item-icon" />
                     <div class="destination-info">
                       <span class="destination-name">Mana Pools</span>
                       <span class="destination-temp">
@@ -85,7 +85,7 @@
                 </li>
                 <li>
                   <a href="#">
-                    <img src="../icons/shield.png" class="menu-item-icon" />
+                    <img src="../icons/destinations.png" class="menu-item-icon" />
                     <div class="destination-info">
                       <span class="destination-name">Nyanga</span>
                       <span class="destination-temp">
@@ -96,7 +96,7 @@
                 </li>
                 <li>
                   <a href="#">
-                    <img src="../icons/shield.png" class="menu-item-icon" />
+                    <img src="../icons/destinations.png" class="menu-item-icon" />
                     <div class="destination-info">
                       <span class="destination-name">Matobo</span>
                       <span class="destination-temp">
@@ -105,14 +105,11 @@
                     </div>
                   </a>
                 </li>
-                
-                
-                
-                
                 <li class="see-all"><a href="#">See all <img src="../icons/right-chevron.png" class="chevron-icon" /></a></li>
+
               </ul>
             </div>
-          </li>
+          </div>
           <li><a href="#">Accommodation</a></li>
           <div class="menu-container">
             <a href="#" class="menu-trigger">Transport</a>
@@ -143,25 +140,71 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
-      <h1>Explore, Experience, Enjoy</h1>
-      <h1>Zimbabwe</h1>
-      <strong class="default-font">
-        Welcome to Off2Zim, your ultimate guide to exploring the beauty and adventure of Zimbabwe.
-        From breathtaking landscapes to vibrant culture, we are here to enhance your travel experience.
-      </strong>
-      <div class="hero-buttons">
-        <a href="#" class="btn btn-primary">Explore</a>
-        <a href="#" class="btn btn-outline">Learn More</a>
-      </div>
+  <!-- Slideshow container -->
+  <div class="slideshow">
+    <div class="slide">
+      <img src="../images/elephants.jpg" alt="Wildlife">
     </div>
-  </section>
+    <div class="slide">
+      <img src="../images/vicfallsSafari.jpg" alt="Nature">
+    </div>
+    <div class="slide">
+      <img src="../images/gonarezhou.jpg" alt="Adventure">
+    </div>
+    <div class="indicators">
+      <span data-slide="1" class="active"></span>
+      <span data-slide="2"></span>
+      <span data-slide="3"></span>
+  </div>
+  </div>
+
+
+  <!-- Search Section -->
+<section class="search-section">
+  <div class="container">
+    <div class="search-tabs">
+      <button class="tab active" data-tab="stays">Stays</button>
+      <button class="tab" data-tab="flights">Flights</button>
+      <button class="tab" data-tab="cars">Cars</button>
+      <button class="tab" data-tab="packages">Packages</button>
+      <button class="tab" data-tab="things-to-do">Things to Do</button>
+      <button class="tab" data-tab="cruises">Cruises</button>
+    </div>
+
+    <div class="search-form-container">
+      <form class="search-form" id="stays" data-tab-content>
+        <div class="search-fields">
+          <div class="search-field">
+            <label for="destination">Going to</label>
+            <input type="text" id="destination" placeholder="Destination, hotel name, or landmark" required>
+          </div>
+          <div class="search-field">
+            <label for="checkin">Check-in</label>
+            <input type="date" id="checkin" required>
+          </div>
+          <div class="search-field">
+            <label for="checkout">Check-out</label>
+            <input type="date" id="checkout" required>
+          </div>
+          <div class="search-field">
+            <label for="travelers">Travelers</label>
+            <input type="text" id="travelers" placeholder="1 room, 2 adults">
+          </div>
+        </div>
+        <div class="search-button">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+
 
   <!-- Features Section -->
   <section class="features">
     <div class="container">
+      <h2>Search comes here...</h2>
       <h2>Discover Our Exciting Platform Features</h2>
       <p class="subtitle">
         Off2Zim offers a seamless way to enhance your travel experience. From booking events to securing dining reservations, we've got you covered.
@@ -300,11 +343,20 @@
         </p>
       </div>
     </div>
+
+    <!-- ✅ Load jQuery FIRST -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!-- ✅ Then Load Your Custom Script -->
+  <script src="script.js"></script>
+
   </footer>
+
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
-  <script src="scripts.js"></script>
+  
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const menuToggle = document.querySelector('.menu-toggle');
