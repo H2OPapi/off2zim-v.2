@@ -1,94 +1,120 @@
-document.addEventListener("DOMContentLoaded", function () {
-  let slideIndex = 0;
-  let slides = document.querySelectorAll(".slide");
-  let dots = document.querySelectorAll(".indicators span");
-  let autoSlideInterval;
+// Set current year in footer
+document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Initialize slideshow
-  function initializeSlideshow() {
-    // Remove any existing active classes
-    slides.forEach(slide => slide.classList.remove("active"));
-    dots.forEach(dot => dot.classList.remove("active"));
+// Mobile Menu Toggle
+document.addEventListener('DOMContentLoaded', function() {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  menuToggle.addEventListener('click', function() {
+    navLinks.classList.toggle('active');
+  });
+});
+
+// Search Tabs Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const tabs = document.querySelectorAll('.search-tabs .tab');
+  const tabContents = document.querySelectorAll('[data-tab-content]');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      
+      // Remove active class from all tabs and contents
+      tabs.forEach(t => t.classList.remove('active'));
+      tabContents.forEach(content => content.classList.remove('active'));
+      
+      // Add active class to selected tab and content
+      tab.classList.add('active');
+      document.getElementById(target).classList.add('active');
+    });
+  });
+});
+
+// Slideshow Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+  const indicators = document.querySelectorAll('.indicators span');
+  const totalSlides = slides.length;
+
+  function showSlide(n) {
+    // Reset all slides and indicators
+    slides.forEach(slide => slide.classList.remove('active'));
+    indicators.forEach(indicator => indicator.classList.remove('active'));
     
-    // Activate first slide and dot
-    slides[0].classList.add("active");
-    dots[0].classList.add("active");
+    // Update current slide index
+    currentSlide = (n + totalSlides) % totalSlides;
     
-    // Start auto-slide
-    autoSlideInterval = setInterval(nextSlide, 9000);
+    // Activate current slide and indicator
+    slides[currentSlide].classList.add('active');
+    indicators[currentSlide].classList.add('active');
   }
 
-  function nextSlide() {
-    // Clear existing interval
-    clearInterval(autoSlideInterval);
-    
-    // Remove active classes
-    slides[slideIndex].classList.remove("active");
-    dots[slideIndex].classList.remove("active");
-    
-    // Update index
-    slideIndex = (slideIndex + 1) % slides.length;
-    
-    // Add active classes
-    slides[slideIndex].classList.add("active");
-    dots[slideIndex].classList.add("active");
-    
-    // Restart interval
-    autoSlideInterval = setInterval(nextSlide, 9000);
+  // Navigation buttons
+  document.querySelector('.prev')?.addEventListener('click', () => showSlide(currentSlide - 1));
+  document.querySelector('.next')?.addEventListener('click', () => showSlide(currentSlide + 1));
+
+  // Indicator clicks
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener('click', () => showSlide(index));
+  });
+
+  // Auto-advance slides every 5 seconds
+  setInterval(() => showSlide(currentSlide + 1), 5000);
+
+  // Initialize first slide
+  showSlide(0);
+});
+
+// Testimonial Carousel
+document.addEventListener('DOMContentLoaded', function() {
+  const testimonials = document.querySelectorAll('.testimonial-content');
+  let testimonialIndex = 0;
+
+  function showTestimonial(n) {
+    testimonials.forEach(t => t.style.display = 'none');
+    testimonialIndex = (n + testimonials.length) % testimonials.length;
+    testimonials[testimonialIndex].style.display = 'block';
   }
 
-  function setSlide(n) {
-    // Clear existing interval
-    clearInterval(autoSlideInterval);
-    
-    // Remove active classes
-    slides[slideIndex].classList.remove("active");
-    dots[slideIndex].classList.remove("active");
-    
-    // Update index
-    slideIndex = n;
-    
-    // Add active classes
-    slides[slideIndex].classList.add("active");
-    dots[slideIndex].classList.add("active");
-    
-    // Restart interval
-    autoSlideInterval = setInterval(nextSlide, 9000);
+  // Auto-rotate testimonials every 7 seconds
+  setInterval(() => showTestimonial(testimonialIndex + 1), 7000);
+  showTestimonial(0);
+});
+
+// Newsletter Form Submission
+document.querySelector('.newsletter-section form')?.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const email = this.querySelector('input[type="email"]').value;
+  // Add your newsletter submission logic here
+  alert('Thanks for subscribing!');
+  this.reset();
+});
+
+// Smooth Scroll for Anchor Links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+});
+
+// Dropdown Menu Interactions
+document.querySelectorAll('.menu-trigger').forEach(trigger => {
+  trigger.addEventListener('click', function(e) {
+    e.preventDefault();
+    this.closest('.menu-container').classList.toggle('active');
+  });
+});
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.menu-container')) {
+    document.querySelectorAll('.menu-container').forEach(menu => {
+      menu.classList.remove('active');
+    });
   }
-
-  // Add click handlers to indicators
-  dots.forEach((dot, index) => {
-    dot.addEventListener("click", () => setSlide(index));
-  });
-
-  // Initialize the slideshow
-  initializeSlideshow();
-
-  // Navigation Menu Toggle
-  const menuToggle = document.querySelector(".menu-toggle");
-  const navLinks = document.querySelector(".nav-links");
-  
-  menuToggle.addEventListener("click", function () {
-      navLinks.classList.toggle("active");
-  });
-
-  // Sticky Header on Scroll
-  window.addEventListener("scroll", function () {
-      const header = document.querySelector("header");
-      header.classList.toggle("sticky", window.scrollY > 50);
-  });
-
-  // Dynamic Year in Footer
-  document.getElementById("year").textContent = new Date().getFullYear();
-
-  // Smooth Scrolling for Anchor Links
-  document.querySelectorAll("a[href^='#']").forEach(anchor => {
-      anchor.addEventListener("click", function (event) {
-          event.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-              target.scrollIntoView({ behavior: "smooth" });
-          }
-      });
-  });
 });
