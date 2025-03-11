@@ -305,12 +305,17 @@ header {
   transform: translateY(-50%);
   background: rgba(0, 0, 0, 0.5);
   color: white;
-  padding: 15px 20px;
+  width: 50px;  /* Ensure equal width and height */
+  height: 50px;
   border: none;
   cursor: pointer;
   font-size: 24px;
+  font-weight: bold;
   z-index: 10;
-  border-radius: 24px;
+  border-radius: 50%; /* Makes it a perfect circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .slide-button:hover {
