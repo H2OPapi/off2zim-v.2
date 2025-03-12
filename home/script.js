@@ -136,6 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Slideshow Functionality
+  // Slideshow Functionality
   let currentSlide = 0;
   const slides = document.querySelectorAll('.slide');
   const indicators = document.querySelectorAll('.indicators span');
@@ -165,6 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
     showSlide(0);
   }
 
+  // Testimonial Carousel
   // Testimonial Carousel
   const testimonials = document.querySelectorAll('.testimonial-content');
   let testimonialIndex = 0;
