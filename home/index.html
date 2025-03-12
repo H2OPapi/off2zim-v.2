@@ -10,7 +10,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Pattaya&family=Rubik+Moonrocks&display=swap" rel="stylesheet">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  
   <!-- Main Styles -->
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -144,13 +146,13 @@
 <div class="slideshow">
   <!-- Navigation buttons -->
   <button class="slide-button prev">
-    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
       <polyline points="15 18 9 12 15 6"></polyline>
     </svg>
   </button>
   
   <button class="slide-button next">
-    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
       <polyline points="9 18 15 12 9 6"></polyline>
     </svg>
   </button>
@@ -216,23 +218,182 @@
     </div>
 
     <div class="search-form-container">
-      <form class="search-form" id="stays" data-tab-content>
+      <!-- Stays Form -->
+      <form class="search-form active" id="stays" data-tab-content>
         <div class="search-fields">
           <div class="search-field">
-            <label for="destination">Going to</label>
-            <input type="text" id="destination" placeholder="Destination, hotel name, or landmark" required>
+            <label for="destination">Destination</label>
+            <input type="text" id="destination" placeholder="Where to?" required>
+            
+            <!-- Add this dropdown right below the input -->
+            <div class="destinations-dropdown">
+              <div class="destinations-list">
+                <div class="destination-item"><i class="fas fa-map-marker-alt"></i> Beitbridge</div>
+<div class="destination-item"><i class="fas fa-map-marker-alt"></i> Binga</div>
+<div class="destination-item"><i class="fas fa-map-marker-alt"></i> Bulawayo</div>
+<div class="destination-item"><i class="fas fa-map-marker-alt"></i> Chinhoyi</div>
+<div class="destination-item"><i class="fas fa-map-marker-alt"></i> Chiredzi</div>
+<div class="destination-item"><i class="fas fa-map-marker-alt"></i> Eastern Highlands</div>
+<div class="destination-item"><i class="fas fa-map-marker-alt"></i> Gweru</div>
+<div class="destination-item"><i class="fas fa-map-marker-alt"></i> Harare</div>
+<div class="destination-item"><i class="fas fa-map-marker-alt"></i> Hwange</div>
+<div class="destination-item"><i class="fas fa-map-marker-alt"></i> Kariba</div>
+<div class="destination-item"><i class="fas fa-map-marker-alt"></i> Kwekwe</div>
+<div class="destination-item"><i class="fas fa-map-marker-alt"></i> Lake Kariba</div>
+<div class="destination-item"><i class="fas fa-map-marker-alt"></i> Masvingo</div>
+<div class="destination-item"><i class="fas fa-map-marker-alt"></i> Mutare</div>
+<div class="destination-item"><i class="fas fa-map-marker-alt"></i> Nyanga</div>
+<div class="destination-item"><i class="fas fa-map-marker-alt"></i> Victoria Falls</div>
+<div class="destination-item"><i class="fas fa-map-marker-alt"></i> Zvishavane</div>
+              </div>
+            </div>
           </div>
           <div class="search-field">
-            <label for="checkin">Check-in</label>
-            <input type="date" id="checkin" required>
+            <label for="dates">Dates</label>
+            <input type="text" id="date" placeholder="When?" required>
           </div>
           <div class="search-field">
-            <label for="checkout">Check-out</label>
-            <input type="date" id="checkout" required>
+            <label for="guests">Guests</label>
+            <input type="text" id="guests" placeholder="Who's coming?" min="1">
+          </div>
+        </div>
+        <div class="search-button">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+      </form>
+
+      <!-- Bus Form -->
+      <form class="search-form" id="bus" data-tab-content>
+        <div class="search-fields">
+          <div class="search-field">
+            <label for="bus-from">From</label>
+            <input type="text" id="bus-from" placeholder="Departure city" required>
+          </div>
+          <div class="search-field">
+            <label for="bus-to">To</label>
+            <input type="text" id="bus-to" placeholder="Destination city" required>
+          </div>
+          <div class="search-field">
+            <label for="bus-date">Travel Date</label>
+            <input type="date" id="bus-date" required>
+          </div>
+          <div class="search-field">
+            <label for="bus-passengers">Passengers</label>
+            <input type="number" id="bus-passengers" placeholder="Number of passengers" min="1">
+          </div>
+        </div>
+        <div class="search-button">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+      </form>
+
+      <!-- Flights Form -->
+      <form class="search-form" id="flights" data-tab-content>
+        <div class="search-fields">
+          <div class="search-field">
+            <label for="flight-from">From</label>
+            <input type="text" id="flight-from" placeholder="Departure city" required>
+          </div>
+          <div class="search-field">
+            <label for="flight-to">To</label>
+            <input type="text" id="flight-to" placeholder="Destination city" required>
+          </div>
+          <div class="search-field">
+            <label for="depart-date">Departure</label>
+            <input type="date" id="depart-date" required>
+          </div>
+          <div class="search-field">
+            <label for="return-date">Return</label>
+            <input type="date" id="return-date">
+          </div>
+        </div>
+        <div class="search-button">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+      </form>
+
+      <!-- Cars Form -->
+      <form class="search-form" id="cars" data-tab-content>
+        <div class="search-fields">
+          <div class="search-field">
+            <label for="pickup-location">Pick-up Location</label>
+            <input type="text" id="pickup-location" placeholder="City or airport" required>
+          </div>
+          <div class="search-field">
+            <label for="dropoff-location">Drop-off Location</label>
+            <input type="text" id="dropoff-location" placeholder="Same as pickup">
+          </div>
+          <div class="search-field">
+            <label for="pickup-date">Pick-up Date</label>
+            <input type="datetime-local" id="pickup-date" required>
+          </div>
+          <div class="search-field">
+            <label for="dropoff-date">Drop-off Date</label>
+            <input type="datetime-local" id="dropoff-date" required>
+          </div>
+        </div>
+        <div class="search-button">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+      </form>
+
+      <!-- Cruises Form -->
+      <form class="search-form" id="cruises" data-tab-content>
+        <div class="search-fields">
+          <div class="search-field">
+            <label for="cruise-destination">Destination</label>
+            <select id="cruise-destination" required>
+              <option value="">Select destination</option>
+              <option>Lake Kariba</option>
+              <option>Zambezi River</option>
+              <option>Indian Ocean</option>
+            </select>
+          </div>
+          <div class="search-field">
+            <label for="cruise-departure">Departure Port</label>
+            <input type="text" id="cruise-departure" placeholder="Departure port" required>
+          </div>
+          <div class="search-field">
+            <label for="cruise-date">Departure Date</label>
+            <input type="date" id="cruise-date" required>
+          </div>
+          <div class="search-field">
+            <label for="cruise-duration">Duration</label>
+            <select id="cruise-duration">
+              <option>3-5 nights</option>
+              <option>6-9 nights</option>
+              <option>10+ nights</option>
+            </select>
+          </div>
+        </div>
+        <div class="search-button">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+      </form>
+
+      <!-- Things to Do Form -->
+      <form class="search-form" id="things-to-do" data-tab-content>
+        <div class="search-fields">
+          <div class="search-field">
+            <label for="activity-location">Location</label>
+            <input type="text" id="activity-location" placeholder="Where are you going?" required>
+          </div>
+          <div class="search-field">
+            <label for="activity-type">Activity Type</label>
+            <select id="activity-type">
+              <option>All Activities</option>
+              <option>Safari Tours</option>
+              <option>Adventure Sports</option>
+              <option>Cultural Experiences</option>
+            </select>
+          </div>
+          <div class="search-field">
+            <label for="activity-date">Date</label>
+            <input type="date" id="activity-date">
           </div>
           <div class="search-field">
             <label for="travelers">Travelers</label>
-            <input type="text" id="travelers" placeholder="1 room, 2 adults">
+            <input type="number" id="travelers" placeholder="Number of people" min="1">
           </div>
         </div>
         <div class="search-button">

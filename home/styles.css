@@ -310,7 +310,6 @@ header {
   border: none;
   cursor: pointer;
   font-size: 24px;
-  font-weight: bold;
   z-index: 10;
   border-radius: 50%; /* Makes it a perfect circle */
   display: flex;
@@ -801,42 +800,71 @@ header.sticky {
   transform: translateY(0);
 }
 
+/* Search Section */
 .search-section {
   background: white;
   padding: 10px;
+}
 
+#destination::placeholder {
+  font-family: 'Century Gothic', sans-serif; /* Change to desired font */
+  font-size: 14px; /* Adjust size */
+  color: gray; /* Adjust color */
+  opacity: 1; /* Ensure visibility (some browsers lower opacity by default) */
+}
+#guests::placeholder {
+  font-family: 'Century Gothic', sans-serif; /* Change to desired font */
+  font-size: 14px; /* Adjust size */
+  color: gray; /* Adjust color */
+  opacity: 1; /* Ensure visibility (some browsers lower opacity by default) */
+}
+#date::placeholder {
+  font-family: 'Century Gothic', sans-serif; /* Change to desired font */
+  font-size: 14px; /* Adjust size */
+  color: gray; /* Adjust color */
+  opacity: 1; /* Ensure visibility (some browsers lower opacity by default) */
 }
 
 .search-tabs {
+  position: relative;
+  margin-bottom: 25px;
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 15px;
 }
-
+.tabs-container {
+  position: relative;
+  display: inline-flex;
+  background: #f5f5f5;
+  border-radius: 30px;
+  padding: 5px;
+}
 .tab {
   font-family: 'Century Gothic', sans-serif;
-  font-size: 13px;
-  color: black;
+  font-size: 17px;
+  color: #666;
   background: none;
   border: none;
-  padding: 10px 15px;
+  padding: 12px 25px;
   cursor: pointer;
-  transition: background 0.3s;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
 }
 
 .tab.active {
-  font-family: 'Century Gothic', sans-serif;
-  background: var(--primary-color);
-  color: white;
-  border-radius: 5px;
-  font-size: 15px;
-  display: inline-block;
-  padding: 10px 20px;
-  border-radius: 25px;
-  text-decoration: none;
+  color: #000;
   font-weight: bold;
-  transition: all 0.3s ease;
+}
+
+.active-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 7px;
+  background: var(--primary-color);
+  border-radius: 7px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .search-form-container {
@@ -845,7 +873,7 @@ header.sticky {
 }
 
 .search-form {
-  display: flex;
+  display: block;
   align-items: center;
   flex-wrap: wrap;
   gap: 15px;
@@ -859,6 +887,7 @@ header.sticky {
   gap: 15px;
   flex-wrap: wrap;
   width: 100%;
+  position: relative;
 }
 
 .search-field {
@@ -875,13 +904,14 @@ header.sticky {
 
 .search-field input {
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 1px solid #c0c1c9;
+  background-color: #f3f4f6;
+  border-radius: 7px;
   font-size: 16px;
 }
 
 .search-button {
-  
+  margin-top: 20px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -908,13 +938,85 @@ header.sticky {
   display: none;
 }
 
-[data-tab-content]:not([hidden]) {
-  display: flex;
+[data-tab-content].active {
+  display: block; /* Changed from flex to block */
+  opacity: 1;
+  visibility: visible;
+  position: relative;
+  transform: translateY(0);
 }
 
+/* Underline animation */
+.tab::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--primary-color);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
 
+.tab.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
 
+.destinations-dropdown {
+  top: 100%;
+  left: 0;
+  display: none;
+  position: absolute;
+  width: 100%;
+  max-width: 400px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  margin-top: 5px;
+  z-index: 1000;
+  max-height: 260px; /* Shows ~7 items with scrolling */
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 
+.destinations-list {
+  padding: 8px 0;
+}
+
+.destination-item {
+  padding: 12px 20px;
+  cursor: pointer;
+  color: #333;
+  font-family: 'Century Gothic', sans-serif;
+  font-size: 15px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.destination-item:hover {
+  background-color: #f5f5f5;
+  transform: translateX(5px);
+}
+
+.selected-location {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 35px;
+  font-family: 'Century Gothic', sans-serif;
+  pointer-events: none;
+}
+
+.selected-location i {
+  color: #666;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
