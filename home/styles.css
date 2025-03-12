@@ -223,6 +223,25 @@ header {
   margin: 0 auto;
   z-index: 1;
 }
+.slideshow-title {
+  position: absolute;
+  top: 160px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  text-align: center;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.5); /* Optional: Add a background for better readability */
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
+.slideshow-title h1 {
+  margin: 0;
+  font-size: 1rem; /* Adjust as needed */
+  font-family:Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
 
 .slide {
   position: absolute;
@@ -332,6 +351,95 @@ header {
   padding: 80px 0;
   text-align: center;
 }
+
+.features h2 {
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  color: #666;
+}
+
+.feature-items {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.feature-item {
+  flex: 1;
+  min-width: 280px;
+  padding: 30px;
+  background: var(--background-light);
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+/* Search Bar in Features Section */
+.search-bar-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px; /* Added margin to separate from feature items */
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  padding-top: 50px; /* Adjusted padding for better appearance */
+}
+
+.search-bar input[type="text"] {
+  width: 100%;
+  padding: 12px 20px; /* Adjusted padding for better appearance */
+  font-size: 16px; /* Adjusted font size */
+  border: 2px solid #ddd;
+  border-radius: 25px;
+  margin-right: 10px; /* Add spacing between input and button */
+}
+
+.search-bar button {
+  padding: 12px 20px; /* Adjusted padding for better appearance */
+  font-size: 16px; /* Adjusted font size */
+  border-radius: 25px;
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.search-bar button:hover {
+  background: var(--primary-hover);
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .search-bar {
+    flex-direction: column; /* Stack input and button vertically */
+    gap: 10px; /* Add spacing between input and button */
+  }
+
+  .search-bar input[type="text"] {
+    margin-right: 0; /* Remove margin for stacked layout */
+  }
+}
 .features h2 {
   margin-bottom: 20px;
   font-size: 2.5rem;
@@ -404,7 +512,7 @@ header {
   padding-bottom: 56.25%;
   height: 0;
   overflow: hidden;
-  max-width: 800px;
+  max-width: 9000px;
   margin: 0 auto;
 }
 .video-wrapper iframe {
@@ -434,6 +542,7 @@ header {
   align-items: center;
   justify-content: center;
   flex-direction: column; /* Change to column to stack elements vertically */
+  text-align: center; /* Center the text */
   gap: 20px;
 }
 .client-dp {
@@ -444,15 +553,13 @@ header {
   margin-top: 20px; /* Add margin to separate from stars */
 }
 .testimonial-content .client-name{
-  font-size: 1.5rem;
   font-weight: 700;
   color: var(--primary-color);
 }
 blockquote {
-  font-size: 1.5rem;
-  font-style: italic;
-  color: #666;
-  max-width: 600px;
+  text-align: center; /* Center the text within the blockquote */
+  max-width: 600px; /* Optional: Set a max-width for better readability */
+  margin: 0 auto; /* Center the blockquote */
 }
 blockquote footer {
   margin-top: 20px;
@@ -487,11 +594,13 @@ blockquote footer {
   padding: 80px 0;
   text-align: center;
 }
+
 .newsletter-section form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .newsletter-section input {
   padding: 10px 20px;
   border: 2px solid var(--primary-color);
@@ -499,11 +608,13 @@ blockquote footer {
   margin-bottom: 10px;
   width: 300px;
   font-size: 1rem;
+  text-align: center; /* Center the placeholder text */
 }
+
 .newsletter-section .btn-primary {
   margin-top: 10px;
-  width: auto; /* Ensure the button width is auto */
 }
+
 .disclaimer {
   font-size: 0.9rem;
   color: #666;
@@ -519,6 +630,7 @@ footer {
 .icon-list ul, .footer-social ul {
   list-style: none;
   display: flex;
+  font-weight: bold;
   justify-content: center;
   gap: 20px;
   margin-bottom: 20px;
@@ -565,32 +677,51 @@ footer {
     transform: translateX(-50%);
   }
 
+/* Mobile Menu */
+.menu-toggle {
+  display: none; /* Hide by default */
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+/* Show menu toggle on mobile */
+@media (max-width: 768px) {
   .menu-toggle {
     display: block;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
   }
+  
+.nav-links {
+  display: block; /*Show the hamburger menu*/
+}
+
+.nav-links.active {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50%; /* Cover half the screen width */
+  height: 100vh; /* Full height */
+  background: #fff;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 20px;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.nav-links.active.show {
+  transform: translateX(0); /* Slide in */
+}
+
+
 
   .nav-links {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 50%; /* Cover the left half of the screen */
-    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
-    position: fixed;
-    top: 0;
-    left: -50%; /* Start off-screen */
-    height: 100%;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    transform: translateX(-100%);
+    display: none; /* Hide nav links by default on mobile */
   }
-
-  .nav-links.active {
-    transform: translateX(0); /* Slide in */
-  }
+}
 
   .menu-book {
     display: none;
@@ -607,20 +738,6 @@ footer {
   .newsletter-section input {
     width: 100%;
     margin-bottom: 10px;
-  }
-}
-
-@media (min-width: 769px) {
-  .menu-toggle {
-    display: none;
-  }
-
-  .nav-links.active {
-    display: flex;
-    flex-direction: row;
-    position: static;
-    background: none;
-    box-shadow: none;
   }
 }
 
@@ -667,8 +784,15 @@ header.sticky {
 /* Style for the menu container */
 .menu-container {
   position: relative;
-  display: inline-block;
-  
+  display: none; /* Hide by default */
+  text-align: center; /* Center the label under the icon */
+}
+
+/* Show menu container on mobile */
+@media (max-width: 768px) {
+  .menu-container {
+    display: inline-block; /* Show on mobile */
+  }
 }
 
 /* Style for the menu icon */
@@ -676,10 +800,22 @@ header.sticky {
   width: 20px;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
+  margin-left: 20px;
 }
 
 .menu-container:hover .menu-icon {
   transform: scale(1.1);
+}
+
+/* Style for the menu label */
+.menu-label {
+  display: block;
+  font-size: 12px;
+  font-family: fantasy;
+  color: #000;
+  font-weight: bold;
+  margin-top: 1px; /* Space between icon and label */
+  margin-left: 20px; /* Space between icon and label */
 }
 
 /* Dropdown Menu Styling */
@@ -819,125 +955,99 @@ header.sticky {
   transform: translateY(0);
 }
 
+/* Search Section */
 .search-section {
-  background: white;
-  padding: 10px;
-
+  padding: 40px 0;
+  background: #f5a00c2a;
 }
 
 .search-tabs {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 15px;
+  flex-wrap: wrap; /* Allow tabs to wrap on smaller screens */
+  gap: 10px; /* Add spacing between tabs */
+  margin-bottom: 20px;
 }
 
-.tab {
-  font-family: 'Century Gothic', sans-serif;
-  font-size: 13px;
-  color: black;
-  background: none;
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.tab.active {
-  font-family: 'Century Gothic', sans-serif;
-  background: var(--primary-color);
-  color: white;
-  border-radius: 5px;
-  font-size: 15px;
-  display: inline-block;
-  padding: 10px 20px;
+.search-tabs .tab {
+  background: #fff;
+  border: 1px solid #ddd;
   border-radius: 25px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: all 0.3s ease;
+  padding: 10px 15px; /* Adjust padding for smaller screens */
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 14px; /* Smaller font size for mobile */
+}
+
+.search-tabs .tab.active {
+  background: var(--primary-color);
+  color: #fff;
 }
 
 .search-form-container {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
 }
 
 .search-form {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 15px;
- 
-  padding: 15px;
-  border-radius: 5px;
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 600px;
 }
 
 .search-fields {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-  width: 100%;
-}
-
-.search-field {
-  flex: 1;
-  min-width: 200px;
-  display: flex;
-  flex-direction: column;
-}
-
-.search-field label {
-  
-  margin-bottom: 5px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+  gap: 15px; /* Add spacing between fields */
 }
 
 .search-field input {
+  width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 14px; /* Smaller font size for mobile */
 }
 
 .search-button {
-  
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  width: 100%;
+  text-align: center;
+  margin-top: 20px;
 }
 
 .search-button .btn-primary {
-  padding: 10px 20px;
-  background: var(--primary-color);
-  color: white;
-  font-family: 'Century Gothic', sans-serif;
-  font-weight: bold;
-  border: none;
+  padding: 12px 20px;
+  font-size: 16px; /* Larger font size for mobile */
   border-radius: 25px;
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s ease;
 }
 
 .search-button .btn-primary:hover {
   background: var(--primary-hover);
 }
 
-[data-tab-content] {
-  display: none;
-}
-
-[data-tab-content]:not([hidden]) {
-  display: flex;
-}
-
-
-
-
-
-/* Responsive Design */
+/* Mobile Responsive Styles */
 @media (max-width: 768px) {
-  .menu-dropdown {
-    position: absolute;
-    width: 100%;
+  .search-tabs .tab {
+    flex: 1 1 45%; /* Allow two tabs per row */
+    text-align: center;
+  }
+
+  .search-form {
+    padding: 15px;
+  }
+
+  .search-fields {
+    grid-template-columns: 1fr; /* Stack fields vertically on mobile */
+  }
+
+  .search-button .btn-primary {
+    width: 100%; /* Full-width button on mobile */
   }
 }

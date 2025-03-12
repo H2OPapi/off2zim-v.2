@@ -18,15 +18,17 @@
   <!-- Header Section -->
   <header>
     <div class="container header-container">
-      <button class="menu-toggle" aria-label="Toggle navigation">
+      <!-- Remove the hamburger menu button -->
+      <!-- <button class="menu-toggle" aria-label="Toggle navigation">
         <i class="fas fa-bars"></i>
-      </button>
+      </button> -->
       
       <div class="logo">
         <img src="../logos/logo.png" alt="Off2Zim Logo" class="logo-img" />
       </div>
       <div class="menu-container">
         <img src="../icons/shield.png" alt="Menu Icon" class="menu-icon" />
+        <span class="menu-label">Menu</span> <!-- Add this line -->
         <div class="menu-dropdown">
           <ul>
             <li class="special-offers"><a href="#"><img src="../icons/special-offers.png" alt="Specials Icon" class="menu-item-icon" /> Specials</a></li>
@@ -142,6 +144,11 @@
 
   <!-- Slideshow container -->
 <div class="slideshow">
+  <!-- Title overlay -->
+  <div class="slideshow-title">
+    <h1>Off2Zim - Explore | Experience | Enjoy</h1>
+  </div>
+
   <!-- Navigation buttons -->
   <button class="slide-button prev">&#10094;</button>
   <button class="slide-button next">&#10095;</button>
@@ -195,74 +202,80 @@
 
 
   <!-- Search Section -->
-<section class="search-section">
+
+    <section class="search-section">
+      <div class="container">
+        <div class="search-tabs">
+          <button class="tab active" data-tab="stays">Stays</button>
+          <button class="tab" data-tab="bus">Bus</button>
+          <button class="tab" data-tab="flights">Flights</button>
+          <button class="tab" data-tab="cars">Cars</button>
+          <button class="tab" data-tab="cruises">Cruises</button>
+          <button class="tab" data-tab="things-to-do">Things to Do</button>
+        </div>
+    
+        <div class="search-form-container">
+          <form class="search-form" id="stays" data-tab-content>
+            <div class="search-fields">
+              <div class="search-field">
+                <label for="destination">Going to</label>
+                <input type="text" id="destination" placeholder="Destination, hotel name, or landmark" required>
+              </div>
+              <div class="search-field">
+                <label for="travelers">Travelers</label>
+                <input type="text" id="travelers" placeholder="1 room, 2 adults">
+              </div>
+              <div class="search-field">
+                <label for="checkin">Check-in</label>
+                <input type="date" id="checkin" required>
+              </div>
+              <div class="search-field">
+                <label for="checkout">Check-out</label>
+                <input type="date" id="checkout" required>
+              </div>
+            </div>
+            <div class="search-button">
+              <button type="submit" class="btn btn-primary">Off2Explore</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  <!-- Features Section -->
+<section class="features">
   <div class="container">
-    <div class="search-tabs">
-      <button class="tab active" data-tab="stays">Stays</button>
-      <button class="tab" data-tab="bus">Bus</button>
-      <button class="tab" data-tab="flights">Flights</button>
-      <button class="tab" data-tab="cars">Cars</button>
-      <button class="tab" data-tab="cruises">Cruises</button>
-      <button class="tab" data-tab="things-to-do">Things to Do</button>
+    <h2>Discover Our Exciting Platform Features</h2>
+    <p class="subtitle">
+      Off2Zim offers a seamless way to enhance your travel experience. From booking events to securing dining reservations, we've got you covered.
+    </p>
+    <div class="feature-items">
+      <div class="feature-item">
+        <i class="fas fa-calendar-alt icon"></i>
+        <h3>Book Events</h3>
+        <p>Easily find and book exciting events happening during your stay in Zimbabwe.</p>
+      </div>
+      <div class="feature-item">
+        <i class="fas fa-hotel icon"></i>
+        <h3>Hotel Stays</h3>
+        <p>Choose from a variety of accommodations that suit your style and budget.</p>
+      </div>
+      <div class="feature-item">
+        <i class="fas fa-utensils icon"></i>
+        <h3>Dining Reservations</h3>
+        <p>Reserve your table at top restaurants for a delightful culinary experience.</p>
+      </div>
     </div>
 
-    <div class="search-form-container">
-      <form class="search-form" id="stays" data-tab-content>
-        <div class="search-fields">
-          <div class="search-field">
-            <label for="destination">Going to</label>
-            <input type="text" id="destination" placeholder="Destination, hotel name, or landmark" required>
-          </div>
-          <div class="search-field">
-            <label for="checkin">Check-in</label>
-            <input type="date" id="checkin" required>
-          </div>
-          <div class="search-field">
-            <label for="checkout">Check-out</label>
-            <input type="date" id="checkout" required>
-          </div>
-          <div class="search-field">
-            <label for="travelers">Travelers</label>
-            <input type="text" id="travelers" placeholder="1 room, 2 adults">
-          </div>
-        </div>
-        <div class="search-button">
-          <button type="submit" class="btn btn-primary">Search</button>
-        </div>
-      </form>
+    <div class="search-bar-container">
+      <div class="search-bar">
+        <input type="text" placeholder="Search..." />
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
     </div>
   </div>
 </section>
 
-
-
-  <!-- Features Section -->
-  <section class="features">
-    <div class="container">
-      <h2>Search comes here...</h2>
-      <h2>Discover Our Exciting Platform Features</h2>
-      <p class="subtitle">
-        Off2Zim offers a seamless way to enhance your travel experience. From booking events to securing dining reservations, we've got you covered.
-      </p>
-      <div class="feature-items">
-        <div class="feature-item">
-          <i class="fas fa-calendar-alt icon"></i>
-          <h3>Book Events</h3>
-          <p>Easily find and book exciting events happening during your stay in Zimbabwe.</p>
-        </div>
-        <div class="feature-item">
-          <i class="fas fa-hotel icon"></i>
-          <h3>Hotel Stays</h3>
-          <p>Choose from a variety of accommodations that suit your style and budget.</p>
-        </div>
-        <div class="feature-item">
-          <i class="fas fa-utensils icon"></i>
-          <h3>Dining Reservations</h3>
-          <p>Reserve your table at top restaurants for a delightful culinary experience.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Benefits Section -->
   <section class="benefits">
@@ -301,27 +314,27 @@
 
   <!-- Testimonial Section -->
   <section class="testimonial">
-    <div class="container">
-      <div class="star-rating">
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-      </div>
-      <div class="testimonial-content">
-        <img src="../images/client-dp.png" alt="Client Photo" class="client-dp" />
-        <blockquote>
-          <p>
-            "Off2Zim made my trip unforgettable! The ease of booking activities and accommodations was incredible."
-          </p>
-          <p class="client-name">
-            T. Mutami, Traveler, Zimbabwe
-          </p>
-        </blockquote>
-      </div>
+  <div class="container">
+    <div class="star-rating">
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
     </div>
-  </section>
+    <div class="testimonial-content">
+      <img src="../images/client-dp.png" alt="Client Photo" class="client-dp" />
+      <blockquote>
+        <p>
+          "Off2Zim made my trip unforgettable! The ease of booking activities and accommodations was incredible."
+        </p>
+        <p class="client-name">
+          T. Mutami, Traveler, Zimbabwe
+        </p>
+      </blockquote>
+    </div>
+  </div>
+</section>
 
   <!-- Call to Action Section -->
   <section class="cta">
@@ -335,22 +348,22 @@
   </section>
 
   <!-- Newsletter Section -->
-  <section class="newsletter-section">
-    <div class="container">
-      <h2>Stay Updated with Off2Zim</h2>
-      <p class="subtitle">
-        Subscribe to our newsletter for the latest travel updates and insider tips.
-        Discover new destinations and experiences in Zimbabwe!
-      </p>
-      <form action="#" method="post">
-        <input type="email" placeholder="Enter your email" required />
-        <button type="submit" class="btn btn-primary">Subscribe</button>
-      </form>
-      <p class="disclaimer">
-        By clicking Subscribe you're confirming that you agree with our Terms and Conditions.
-      </p>
-    </div>
-  </section>
+<section class="newsletter-section">
+  <div class="container">
+    <h2>Stay Updated with Off2Zim</h2>
+    <p class="subtitle">
+      Subscribe to our newsletter for the latest travel updates and insider tips.
+      Discover new destinations and experiences in Zimbabwe!
+    </p>
+    <form action="#" method="post">
+      <input type="email" placeholder="Enter your email" required />
+      <button type="submit" class="btn btn-primary">Subscribe</button>
+    </form>
+    <p class="disclaimer">
+      By clicking Subscribe you're confirming that you agree with our Terms and Conditions.
+    </p>
+  </div>
+</section>
 
   <!-- Footer Section -->
   <footer>
@@ -364,11 +377,11 @@
       </div>
       <div class="footer-social">
         <ul>
-          <li><a href="https://www.facebook.com/Off2Zim"><img src="../icons/icons8-facebook-100.png" alt="Facebook" /></a></li>
-          <li><a href="https://www.instagram.com/off2zim/?utm_source=ig_web_button_share_sheet"><img src="../icons/icons8-instagram-100.png" alt="Instagram" /></a></li>
-          <li><a href="https://x.com/Off2Zim"><img src="../icons/icons8-x-100.png" alt="Twitter" /></a></li>
-          <li><a href="#"><img src="../icons/icons8-linkedin-100.png" alt="LinkedIn" /></a></li>
-          <li><a href="#"><img src="../icons/icons8-youtube-100.png" alt="Youtube" /></a></li>
+          <li><a href="https://www.facebook.com/Off2Zim"><img src="../icons/facebook orange.png" alt="Facebook" /></a></li>
+          <li><a href="https://www.instagram.com/off2zim/?utm_source=ig_web_button_share_sheet"><img src="../icons/instagram orange.png" alt="Instagram" /></a></li>
+          <li><a href="https://x.com/Off2Zim"><img src="../icons/x orange.png" alt="Twitter" /></a></li>
+          <li><a href="#"><img src="../icons/linkedin orange.png" alt="LinkedIn" /></a></li>
+          <li><a href="#"><img src="../icons/youtube orange.png" alt="Youtube" /></a></li>
         </ul>
       </div>
       <div class="footer-bottom">

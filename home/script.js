@@ -1,18 +1,24 @@
 // Set current year in footer
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Mobile Menu Toggle
-document.addEventListener('DOMContentLoaded', function() {
-  const menuToggle = document.querySelector('.menu-toggle');
-  const navLinks = document.querySelector('.nav-links');
+document.addEventListener('DOMContentLoaded', function () {
+  const menuToggle = document.querySelector('.menu-container');
+  const navLinks = document.querySelector('.menu-dropdown');
 
-  menuToggle.addEventListener('click', function() {
-    navLinks.classList.toggle('active');
+  menuToggle.addEventListener('click', function (e) {
+    e.preventDefault();
+    menuDropdown.classList.toggle('show');
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.nav-links') && !e.target.closest('.menu-toggle')) {
+      navLinks.classList.remove('show');
+    }
   });
 });
 
-// Search Tabs Functionality
-document.addEventListener('DOMContentLoaded', function() {
+  // Search Tabs Functionality
   const tabs = document.querySelectorAll('.search-tabs .tab');
   const tabContents = document.querySelectorAll('[data-tab-content]');
 
@@ -28,11 +34,9 @@ document.addEventListener('DOMContentLoaded', function() {
       tab.classList.add('active');
       document.getElementById(target).classList.add('active');
     });
-  });
-});
+  
 
-// Slideshow Functionality
-document.addEventListener('DOMContentLoaded', function() {
+  // Slideshow Functionality
   let currentSlide = 0;
   const slides = document.querySelectorAll('.slide');
   const indicators = document.querySelectorAll('.indicators span');
@@ -65,10 +69,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Initialize first slide
   showSlide(0);
-});
 
-// Testimonial Carousel
-document.addEventListener('DOMContentLoaded', function() {
+  // Testimonial Carousel
   const testimonials = document.querySelectorAll('.testimonial-content');
   let testimonialIndex = 0;
 
@@ -83,10 +85,21 @@ document.addEventListener('DOMContentLoaded', function() {
   showTestimonial(0);
 });
 
-// Newsletter Form Submission
+// Newsletter Form Submission with Validation
 document.querySelector('.newsletter-section form')?.addEventListener('submit', function(e) {
   e.preventDefault();
-  const email = this.querySelector('input[type="email"]').value;
+  const emailInput = this.querySelector('input[type="email"]');
+  const email = emailInput.value;
+  
+  // Simple email validation regex
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailPattern.test(email)) {
+    alert('Please enter a valid email address.');
+    emailInput.focus();
+    return;
+  }
+
   // Add your newsletter submission logic here
   alert('Thanks for subscribing!');
   this.reset();
