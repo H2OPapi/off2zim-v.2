@@ -180,8 +180,8 @@ header {
   background: var(--primary-hover);
 }
 .btn-outline {
-  border: 2px solid var(--primary-color);
-  color: var(--primary-color);
+  border: 2px solid #ddd;
+  color: #ddd;
   display: flex;
   align-items: center; /* Align image and text vertically */
   gap: 7px; /* Space between image and text */
@@ -192,6 +192,7 @@ header {
   background: var(--primary-color);
   color: #fff;
 }
+
 
 .login-icon {
   width: 20px; /* Adjust size as needed */
@@ -432,14 +433,20 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column; /* Change to column to stack elements vertically */
   gap: 20px;
-  flex-wrap: wrap;
 }
 .client-dp {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   object-fit: cover;
+  margin-top: 20px; /* Add margin to separate from stars */
+}
+.testimonial-content .client-name{
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
 }
 blockquote {
   font-size: 1.5rem;
@@ -465,21 +472,37 @@ blockquote footer {
   font-size: 2.5rem;
 }
 
+/* Call to Action Section */
+.cta-buttons .btn-small {
+  width: 25%; /* Adjust the width as needed */
+  padding: 10px 15px; /* Adjust padding for better appearance */
+  font-size: 0.875rem; /* Adjust font size if needed */
+  text-align: center;
+  display: inline-block;
+  margin: 5px;
+}
+
 /* Newsletter Section */
 .newsletter-section {
   padding: 80px 0;
   text-align: center;
 }
+.newsletter-section form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .newsletter-section input {
   padding: 10px 20px;
   border: 2px solid var(--primary-color);
   border-radius: 25px;
-  margin-right: 10px;
+  margin-bottom: 10px;
   width: 300px;
   font-size: 1rem;
 }
 .newsletter-section .btn-primary {
   margin-top: 10px;
+  width: auto; /* Ensure the button width is auto */
 }
 .disclaimer {
   font-size: 0.9rem;
